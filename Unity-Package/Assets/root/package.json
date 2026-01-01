@@ -13,9 +13,7 @@
     "version": "0.1.0",
     "unity": "2022.3",
     "description": "Editor-only secure key storage backed by OS credential managers (Windows Credential Manager, macOS Keychain, Linux Secret Service).",
-    "dependencies": {
-        "extensions.unity.playerprefsex": "2.0.2"
-    },
+    "dependencies": {},
     "scopedRegistries": [
         {
             "name": "package.openupm.com",
@@ -28,5 +26,3 @@
         }
     ]
 }
-
-

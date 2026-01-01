@@ -17,7 +17,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Extensions.Unity.PlayerPrefsEx;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -28,7 +27,7 @@ namespace com.InMetaTech.Unity.Editor.Utils
     {
         private const string SecretToolName = "secret-tool";
         private const string DbusLaunchName = "dbus-launch";
-        private static PlayerPrefsBool DoNotAskAgain = new("Unity.LinuxSecretStore.DoNotAskAgain");
+        private const string DoNotAskAgainKey = "Unity.LinuxSecretStore.DoNotAskAgain";
         private static bool promptShownThisSession;
 
         public static void Init()
@@ -56,7 +55,7 @@ namespace com.InMetaTech.Unity.Editor.Utils
             if (promptShownThisSession && !ignoreDoNotAskAgain)
                 return;
 
-            if (!ignoreDoNotAskAgain && DoNotAskAgain.Value)
+            if (!ignoreDoNotAskAgain && EditorPrefs.GetBool(DoNotAskAgainKey, false))
                 return;
 
             promptShownThisSession = true;
@@ -78,7 +77,7 @@ namespace com.InMetaTech.Unity.Editor.Utils
 
             if (choice == 2)
             {
-                DoNotAskAgain.Value = true;
+                EditorPrefs.SetBool(DoNotAskAgainKey, true);
                 return;
             }
 
@@ -323,5 +322,3 @@ namespace com.InMetaTech.Unity.Editor.Utils
 }
 
 #endif
-
-
