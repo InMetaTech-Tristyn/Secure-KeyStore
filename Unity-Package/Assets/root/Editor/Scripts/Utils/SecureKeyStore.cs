@@ -1,11 +1,11 @@
 /*
-┌──────────────────────────────────────────────────────────────────┐
-│  Author: Tristyn Mackay (https://github.com/InMetaTech-Tristyn)  │
-│  Repository: GitHub (https://github.com/TristynMackay/Unity-MCP)    │
-│  Copyright (c) 2025 Tristyn Mackay                                  │
-│  Licensed under the Apache License, Version 2.0.                 │
-│  See the LICENSE file in the project root for more information.  │
-└──────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Author: Tristyn Mackay (https://github.com/InMetaTech-Tristyn)              │
+│  Repository: GitHub (https://github.com/InMetaTech-Tristyn/Secure-Keystore)  │
+│  Copyright (c) 2025 Tristyn Mackay                                           │
+│  Licensed under the Apache License, Version 2.0.                             │
+│  See the LICENSE file in the project root for more information.              │
+└──────────────────────────────────────────────────────────────────────────────┘
 */
 
 #nullable enable
@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace com.InMetaTech.Unity.MCP.Editor.Utils
+namespace com.InMetaTech.Unity.Editor.Utils
 {
     /// <summary>
     /// Notes:
@@ -26,7 +26,7 @@ namespace com.InMetaTech.Unity.MCP.Editor.Utils
     /// </summary>
     public static partial class SecureKeyStore
     {
-        private const string ServiceName = "com.in-meta-tech.unity.mcp";
+        private const string ServiceName = "com.in-meta-tech.unity";
         private const string DisplayName = "AI Game Developer";
 
         static readonly object InMemoryLock = new();
@@ -126,7 +126,7 @@ namespace com.InMetaTech.Unity.MCP.Editor.Utils
 
         static bool ShouldUseInMemoryStore()
         {
-            var flag = Environment.GetEnvironmentVariable("UNITY_MCP_USE_IN_MEMORY_KEYSTORE");
+            var flag = Environment.GetEnvironmentVariable("UNITY_USE_IN_MEMORY_KEYSTORE");
             if (string.IsNullOrWhiteSpace(flag))
                 return false;
 

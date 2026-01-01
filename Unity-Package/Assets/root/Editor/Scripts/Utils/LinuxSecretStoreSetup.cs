@@ -1,3 +1,13 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Author: Tristyn Mackay (https://github.com/InMetaTech-Tristyn)              │
+│  Repository: GitHub (https://github.com/InMetaTech-Tristyn/Secure-Keystore)  │
+│  Copyright (c) 2025 Tristyn Mackay                                           │
+│  Licensed under the Apache License, Version 2.0.                             │
+│  See the LICENSE file in the project root for more information.              │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
 #if UNITY_EDITOR_LINUX
 
 #nullable enable
@@ -12,13 +22,13 @@ using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace com.InMetaTech.Unity.MCP.Editor.Utils
+namespace com.InMetaTech.Unity.Editor.Utils
 {
     public static class LinuxSecretStoreSetup
     {
         private const string SecretToolName = "secret-tool";
         private const string DbusLaunchName = "dbus-launch";
-        private static PlayerPrefsBool DoNotAskAgain = new("Unity-MCP.LinuxSecretStore.DoNotAskAgain");
+        private static PlayerPrefsBool DoNotAskAgain = new("Unity.LinuxSecretStore.DoNotAskAgain");
         private static bool promptShownThisSession;
 
         public static void Init()

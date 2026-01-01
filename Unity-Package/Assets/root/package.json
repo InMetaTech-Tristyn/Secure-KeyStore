@@ -1,15 +1,14 @@
 {
-    "name": "com.in-meta-tech.unity.mcp.securekeystore",
-    "displayName": "Secure Key Store (Unity MCP)",
+    "name": "com.in-meta-tech.unity.securekeystore",
+    "displayName": "Secure Key Store (Unity)",
     "author": {
         "name": "Tristyn Mackay",
-        "url": "https://github.com/TristynMackay"
+        "url": "https://github.com/InMetaTech-Tristyn"
     },
     "keywords": [
         "Secure Storage",
         "Key Store",
-        "MCP",
-        "Unity MCP"
+        "Unity"
     ],
     "version": "0.1.0",
     "unity": "2022.3",

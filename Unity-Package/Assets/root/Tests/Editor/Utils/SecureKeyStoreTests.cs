@@ -1,12 +1,22 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Author: Tristyn Mackay (https://github.com/InMetaTech-Tristyn)              │
+│  Repository: GitHub (https://github.com/InMetaTech-Tristyn/Secure-Keystore)  │
+│  Copyright (c) 2025 Tristyn Mackay                                           │
+│  Licensed under the Apache License, Version 2.0.                             │
+│  See the LICENSE file in the project root for more information.              │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
 #nullable enable
 
 using System;
 using System.Diagnostics;
-using com.InMetaTech.Unity.MCP.Editor.Utils;
+using com.InMetaTech.Unity.Editor.Utils;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace com.InMetaTech.Unity.MCP.SecureKeyStore.Editor.Tests
+namespace com.InMetaTech.Unity.SecureKeyStore.Editor.Tests
 {
     [TestFixture]
     public class SecureKeyStoreTests
@@ -35,7 +45,7 @@ namespace com.InMetaTech.Unity.MCP.SecureKeyStore.Editor.Tests
         [Test]
         public void InMemoryStore_RoundTrip()
         {
-            var key = $"unity-mcp-inmemory-{Guid.NewGuid():N}";
+            var key = $"unity-inmemory-{Guid.NewGuid():N}";
             const string value = "inmemory-test";
 
             try
@@ -55,7 +65,7 @@ namespace com.InMetaTech.Unity.MCP.SecureKeyStore.Editor.Tests
 
         static void RunRoundTrip(string platformName)
         {
-            var key = $"unity-mcp-test-{Guid.NewGuid():N}";
+            var key = $"unity-test-{Guid.NewGuid():N}";
             const string value = "secure-key-store-test";
 
             try
@@ -111,7 +121,7 @@ namespace com.InMetaTech.Unity.MCP.SecureKeyStore.Editor.Tests
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = "secret-tool",
-                    Arguments = "lookup service com.in-meta-tech.unity.mcp account unity-mcp-test",
+                    Arguments = "lookup service com.in-meta-tech.unity account unity-test",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
