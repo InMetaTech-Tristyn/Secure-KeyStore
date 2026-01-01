@@ -39,7 +39,7 @@ Notes:
 
 ## In-memory mode (tests/CI)
 
-Set the environment variable `UNITY_MCP_USE_IN_MEMORY_KEYSTORE` to `1`, `true`, or `yes`.
+Set the environment variable `UNITY_USE_IN_MEMORY_KEYSTORE` to `1`, `true`, or `yes`.
 This keeps secrets in memory for the current editor session only.
 
 ## Linux requirements
