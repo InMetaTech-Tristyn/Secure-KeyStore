@@ -12,9 +12,9 @@
 
 using System;
 using System.Diagnostics;
-using com.InMetaTech.Unity.Editor.Utils;
 using NUnit.Framework;
 using UnityEngine;
+using SecureKeyStoreApi = global::com.InMetaTech.Unity.Editor.Utils.SecureKeyStore;
 
 namespace com.InMetaTech.Unity.SecureKeyStore.Editor.Tests
 {
@@ -24,11 +24,11 @@ namespace com.InMetaTech.Unity.SecureKeyStore.Editor.Tests
         [Test]
         public void EmptyKey_NoThrow()
         {
-            Assert.DoesNotThrow(() => SecureKeyStore.Set(string.Empty, "value"));
-            Assert.DoesNotThrow(() => SecureKeyStore.Set("   ", "value"));
-            Assert.DoesNotThrow(() => SecureKeyStore.Delete(string.Empty));
-            Assert.IsNull(SecureKeyStore.Get(string.Empty));
-            Assert.IsNull(SecureKeyStore.Get("   "));
+            Assert.DoesNotThrow(() => SecureKeyStoreApi.Set(string.Empty, "value"));
+            Assert.DoesNotThrow(() => SecureKeyStoreApi.Set("   ", "value"));
+            Assert.DoesNotThrow(() => SecureKeyStoreApi.Delete(string.Empty));
+            Assert.IsNull(SecureKeyStoreApi.Get(string.Empty));
+            Assert.IsNull(SecureKeyStoreApi.Get("   "));
         }
 
         [Test]
@@ -50,16 +50,16 @@ namespace com.InMetaTech.Unity.SecureKeyStore.Editor.Tests
 
             try
             {
-                SecureKeyStore.SetInMemoryForTests(key, value);
-                var read = SecureKeyStore.GetInMemoryForTests(key);
+                SecureKeyStoreApi.SetInMemoryForTests(key, value);
+                var read = SecureKeyStoreApi.GetInMemoryForTests(key);
                 Assert.AreEqual(value, read);
 
-                SecureKeyStore.DeleteInMemoryForTests(key);
-                Assert.IsNull(SecureKeyStore.GetInMemoryForTests(key));
+                SecureKeyStoreApi.DeleteInMemoryForTests(key);
+                Assert.IsNull(SecureKeyStoreApi.GetInMemoryForTests(key));
             }
             finally
             {
-                Assert.DoesNotThrow(() => SecureKeyStore.DeleteInMemoryForTests(key));
+                Assert.DoesNotThrow(() => SecureKeyStoreApi.DeleteInMemoryForTests(key));
             }
         }
 
@@ -70,20 +70,20 @@ namespace com.InMetaTech.Unity.SecureKeyStore.Editor.Tests
 
             try
             {
-                SecureKeyStore.Delete(key);
-                SecureKeyStore.Set(key, value);
+                SecureKeyStoreApi.Delete(key);
+                SecureKeyStoreApi.Set(key, value);
 
-                var read = SecureKeyStore.Get(key);
+                var read = SecureKeyStoreApi.Get(key);
                 Assert.IsFalse(string.IsNullOrWhiteSpace(read), $"Expected {platformName} secure store to return a value.");
                 Assert.AreEqual(value, read);
 
-                SecureKeyStore.Set(key, null);
-                var removed = SecureKeyStore.Get(key);
+                SecureKeyStoreApi.Set(key, null);
+                var removed = SecureKeyStoreApi.Get(key);
                 Assert.IsTrue(string.IsNullOrWhiteSpace(removed), "Expected null value to remove stored key.");
             }
             finally
             {
-                Assert.DoesNotThrow(() => SecureKeyStore.Delete(key));
+                Assert.DoesNotThrow(() => SecureKeyStoreApi.Delete(key));
             }
         }
 
